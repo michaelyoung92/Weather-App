@@ -70,8 +70,8 @@ const longApi = {
     base: 'https://api.openweathermap.org/data/2.5/'
 }
 
-const main = document.querySelector('main');
-main.style.display = 'none';
+// const main = document.querySelector('main');
+// main.style.display = 'none';
 
 const searchBox = document.querySelector('.search-box');
 searchBox.addEventListener('keypress', setQuery);
@@ -93,38 +93,63 @@ function getResults(query) {
 function displayResults(weather) {
     console.log(weather);
 
-    let city = document.querySelector('.location .city');
+    let city = document.querySelector('.location');
     city.innerText = `${weather.city.name}, ${weather.city.country}`;
 
     let now = new Date();
-    let date = document.querySelector('.location .date');
+    let date = document.querySelector('.todays-date');
     date.innerText = dateBuilder(now);
 
-    let temp = document.querySelector('.current .temp');
+    let temp = document.querySelector('.temperature');
     temp.innerHTML = `${Math.round(weather.list[0].main.temp)}<span>°c</span>`;
 
-    let weather_el = document.querySelector('.current .weather');
-    weather_el.innerText = weather.list[0].weather[0].main;
+    let weatherImg = document.querySelector('.weather-img');
 
-    let hilow = document.querySelector('.hi-low');
-    hilow.innerText  =`${Math.round(weather.list[0].main.temp_min)}°c / ${Math.round(weather.list[0].main.temp_max)}°c`;
+    const weatherIcons = [
+        {name: 'Thunderstorm'},
+        {name: 'Clouds'},
+        {name: 'Clear'},
+        {name: 'Drizzle'},
+        {name: 'Rain'},
+        {name: 'Snow'},
+        {name: 'Fog'},
+        {name: 'Tornado'}
+    ]
+
+    weatherIcons.forEach(icon => {
+        if(icon.name == weather.list[0].weather[0].main) {
+            weatherImg.src = `img/svg/${icon.name}.svg`;
+        }
+    });
+
+    let minMax = document.querySelector('.min-max');
+    minMax.innerText  =`${Math.round(weather.list[0].main.temp_min)}°c / ${Math.round(weather.list[0].main.temp_max)}°c`;
+
+    const extraInfo = document.querySelector('.extra-info');
+    extraInfo.classList.add('show');
 
     //Wind Speed
 
-    let windSpeed = document.querySelector('.wind-speed');
+    let windSpeed = document.querySelector('.wind-speed span');
     let windMps = weather.list[0].wind.speed;
     windSpeed.innerText = `${Math.round(windMps * 2.23)} mph`;
 
     //Humidity
-    let humidity = document.querySelector('.humidity');
+    let humidity = document.querySelector('.humidity span');
     humidity.innerText = `${weather.list[0].main.humidity} %`;
 
     //Feels Like
-    let feelsLike = document.querySelector('.feels-like');
+    let feelsLike = document.querySelector('.feels-like span');
     feelsLike.innerText = `${Math.round(weather.list[0].main.feels_like)}°c`;
-    
 
-    main.style.display = 'block';
+    //Background Color Changer
+    const body = document.querySelector('body');
+    if(weather.list[0].weather[0].main == 'Clouds'){
+        body.style.backgroundColor = 'grey';
+    } else if(weather.list[0].weather[0].main == 'Clear') {
+        body.style.backgroundColor = '#FFD369';
+    }
+
 }
 
 function dateBuilder(d) {

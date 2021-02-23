@@ -1,5 +1,7 @@
 //Google fonts link
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
+@import 'weather-icons-wind.min.css';
+@import 'weather-icons.min.css';
 
 *{
     margin: 0;
@@ -9,97 +11,83 @@
 
 body{
     font-family: 'montserrat';
-    background-image: url(../img/bg.jpg);
-    background-position: top center;
-    background-size: cover;
+    background-color: #8AC4D0;
+    color: #fff;
 }
 
-.app-wrap{
+.container{
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4));
-}
-
-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 50px 15px 15px;
-
-    input{
-        width: 100%;
-        max-width: 280px;
-        padding: 10px 15px;
-        border: none;
-        outline: none;
-        background-color: rgba(90, 117, 143, 0.2);
-        color: #b9b9b9;
-        border-radius: 15px 3px 15px 3px;
-        border-bottom: 3px solid #539dc283;
-        font-size: 20px;
-        font-weight: 300;
-        transition: 0.2s ease-out;
-
-        &:focus{
-            background-color: rgba(90, 117, 143, 0.4);
-        }
-    }
-}
-
-main{
-    flex: 1 1 100%;
-    padding: 25px 25px 50px;
-    display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
+    padding: 1em 0;
+    min-height: 100vh;
 }
 
-.location .city{
+input{
+    width: 250px;
+    border: none;
+    padding: 1em;
+    border-radius: 25px 8px;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.3);
     color: #fff;
-    font-size: 32px;
-    font-weight: 500;
-    margin-bottom: 5px;
+    font-size: 1em;
+    margin-bottom: 1em;
+}
+::placeholder{
+    color: rgba(255, 255, 255, 0.644);
 }
 
-.location .date{
-    color: #fff;
-    font-size: 16px;
+.todays-date{
+    font-size: 1.4em;
 }
 
-.current .temp{
-    color: #fff;
-    font-size: 102px;
-    font-weight: 900;
-    margin: 30px 0;
-    text-shadow: 2px 8px rgba(0, 0, 0, 0.3);
+.weather-icon{
+    margin-bottom: 0;
 
-    span{
-        font-weight: 500;
+    img{
+        width: 200px;
     }
 }
 
-.current .weather{
-    color: #fff;
-    font-size: 32px;
-    font-weight: 700;
-    font-style: italic;
-    text-shadow: 0 3px rgba(0, 0, 0, 0.4);
+.temperature{
+    font-size: 4em;
+    font-weight: bold;
 }
 
-.current .hi-low{
-    color: #fff;
-    font-size: 24px;
-    font-weight: 500;
-    text-shadow: 0 4px rgba(0, 0, 0, 0.4);
+.min-max{
+    margin-bottom: 2em;
+    font-style: italic;
+}
+
+.location{
+    font-weight: 600;
+    font-size: 1.4em;
 }
 
 .extra-info{
-    margin-top: 5em;
-    color: #fff;
-    width: 700px;
+    width: 100%;
+    display: none;
+
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    img{
+        width: 40px;
+        margin-bottom: 0.5em;
+    }
+}
+
+.extra-info.show {
     display: flex;
     justify-content: space-between;
-    margin: 5em auto;
+    align-items: center;
 }

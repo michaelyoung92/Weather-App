@@ -11,47 +11,33 @@
 </head>
 <body>
     
-   <div class="app-wrap">
-       <header>
-           <input type="text" autocomplete="off" class="search-box" placeholder="Search for a city...">
-       </header>
+   <div class="app-wrapper">
+       <div class="container">
 
-       <main>
-        <section class="location">
-            <div class="city">
-                Glasgow, UK
-            </div>
+           <!--Search Box-->
+           <div class="city-search">
+               <input type="text" class="search-box" autocomplete="off" placeholder="Enter your city name...">
+               <div class="todays-date"></div>
+           </div>
 
-            <div class="date">
-                Monday 19 February 2021
-            </div>
-        </section>
+           <!--Main Content-->
+           <main>
+               <div class="weather-icon"><img src="" alt="" class="weather-img"></div>
 
-        <div class="current">
-            <div class="temp">
-                15 <span>°c</span>
-            </div>
-            
-            <div class="weather">
-                Sunny
-            </div>
+               <div class="temperature"></div>
 
-            <div class="hi-low">
-                5°c / 12°c
-            </div>
-        </div>
+               <div class="min-max"></div>
 
-        <!--Extra Info-->
-        <div class="extra-info">
+               <div class="location"></div>
+           </main>
 
-            <div class="wind-speed"></div>
-
-            <div class="humidity"></div>
-
-            <div class="feels-like"></div>
-            
-        </div>
-       </main>
+           <!--Extra Weather Info-->
+           <div class="extra-info">
+               <div class="wind-speed"><img src="img/SVG/wind.svg" alt=""> <span></span></div>
+               <div class="humidity"><img src="img/SVG/wet.svg" alt="">   <span></span></div>
+               <div class="feels-like"><img src="img/SVG/thermometer-75.svg" alt=""> <span></span></div>
+           </div>
+       </div>
    </div>
 
    
