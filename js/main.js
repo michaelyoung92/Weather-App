@@ -70,9 +70,6 @@ const longApi = {
     base: 'https://api.openweathermap.org/data/2.5/'
 }
 
-// const main = document.querySelector('main');
-// main.style.display = 'none';
-
 const searchBox = document.querySelector('.search-box');
 searchBox.addEventListener('keypress', setQuery);
 
@@ -105,20 +102,22 @@ function displayResults(weather) {
 
     let weatherImg = document.querySelector('.weather-img');
 
+
+    //Display correct weather icon
     const weatherIcons = [
-        {name: 'Thunderstorm'},
-        {name: 'Clouds'},
-        {name: 'Clear'},
-        {name: 'Drizzle'},
-        {name: 'Rain'},
-        {name: 'Snow'},
-        {name: 'Fog'},
-        {name: 'Tornado'}
+        'Clear',
+        'Clouds',
+        'Drizzle',
+        'Fog',
+        'Rain',
+        'Snow',
+        'Thunderstorm',
+        'Tornado'
     ]
 
     weatherIcons.forEach(icon => {
-        if(icon.name == weather.list[0].weather[0].main) {
-            weatherImg.src = `img/svg/${icon.name}.svg`;
+        if(icon == weather.list[0].weather[0].main) {
+            weatherImg.src = `img/svg/${icon}.svg`;
         }
     });
 
@@ -144,12 +143,22 @@ function displayResults(weather) {
 
     //Background Color Changer
     const body = document.querySelector('body');
-    if(weather.list[0].weather[0].main == 'Clouds'){
-        body.style.backgroundColor = 'grey';
-    } else if(weather.list[0].weather[0].main == 'Clear') {
-        body.style.backgroundColor = '#FFD369';
-    }
+    const colorList = [
+        {weather: 'Clear', color1: '#66B9D4', color2: '#46AFCF'},
+        {weather: 'Clouds', color1: '#4C4B53', color2: '#7F7E84'},
+        {weather: 'Drizzle', color1: '#b2c9c8', color2: '#698b8b'},
+        {weather: 'Fog', color1: '#C5B2A6', color2: '#7F7E84'},
+        {weather: 'Rain', color1: '#577d9c', color2: '#1e3475'},
+        {weather: 'Snow', color1: '#bfc9cf', color2: '#d3d7daf1'},
+        {weather: 'Thunderstorm', color1: '#314F71', color2: '#4A4176'},
+        {weather: 'Tornado', color1: '#939393', color2: '#e47977c5'}
+    ]
 
+    colorList.forEach(color => {
+        if(color.weather == weather.list[0].weather[0].main) {
+            body.style.backgroundImage = `linear-gradient(to bottom right, ${color.color1}, ${color.color2})`;
+        }
+    });
 }
 
 function dateBuilder(d) {
