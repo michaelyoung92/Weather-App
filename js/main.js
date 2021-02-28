@@ -121,14 +121,15 @@ function displayResults(weather) {
         }
     });
 
+    //Min & Max Temps
     let minMax = document.querySelector('.min-max');
-    minMax.innerText  =`${Math.round(weather.list[0].main.temp_min)}°c / ${Math.round(weather.list[0].main.temp_max)}°c`;
+    minMax.innerText =`${Math.round(weather.list[0].main.temp_min)}°c / ${Math.round(weather.list[0].main.temp_max)} °c `;
 
+    //Extra Infor
     const extraInfo = document.querySelector('.extra-info');
     extraInfo.classList.add('show');
 
     //Wind Speed
-
     let windSpeed = document.querySelector('.wind-speed span');
     let windMps = weather.list[0].wind.speed;
     windSpeed.innerText = `${Math.round(windMps * 2.23)} mph`;
@@ -144,12 +145,12 @@ function displayResults(weather) {
     //Background Color Changer
     const body = document.querySelector('body');
     const colorList = [
-        {weather: 'Clear', color1: '#66B9D4', color2: '#46AFCF'},
-        {weather: 'Clouds', color1: '#4C4B53', color2: '#7F7E84'},
+        {weather: 'Clear', color1: '#7AE7C7', color2: '#72C1E1'},
+        {weather: 'Clouds', color1: '#F981BB', color2: '#7F7E84'},
         {weather: 'Drizzle', color1: '#b2c9c8', color2: '#698b8b'},
         {weather: 'Fog', color1: '#C5B2A6', color2: '#7F7E84'},
-        {weather: 'Rain', color1: '#577d9c', color2: '#1e3475'},
-        {weather: 'Snow', color1: '#bfc9cf', color2: '#d3d7daf1'},
+        {weather: 'Rain', color1: '#504AC4', color2: '#59AED1'},
+        {weather: 'Snow', color1: '#bfc9cf', color2: '#77BDE0'},
         {weather: 'Thunderstorm', color1: '#314F71', color2: '#4A4176'},
         {weather: 'Tornado', color1: '#939393', color2: '#e47977c5'}
     ]
