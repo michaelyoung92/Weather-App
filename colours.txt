@@ -1,0 +1,39 @@
+colours:
+
+background-image: linear-gradient(to bottom right, #95E1D3, #bccea6);
+.weather-clear {
+     background-image: linear-gradient(to bottom right, #7AE7C7, #72C1E1) 
+}
+
+.weather-clouds {
+    background-image: linear-gradient(to bottom right, #F981BB, #698b8b) 
+}
+
+.weather-drizzle {
+    background-image: linear-gradient(to bottom right, #b2c9c8, #72C1E1) 
+}
+
+.weather-fog {
+    background-image: linear-gradient(to bottom right, #C5B2A6, #7F7E84) 
+}
+
+.weather-rain {
+    background-image: linear-gradient(to bottom right, #504AC4, #59AED1) 
+}
+
+.weather-snow {
+    background-image: linear-gradient(to bottom right, #bfc9cf, #77BDE0) 
+}
+
+.weather-thunderstorms {
+    background-image: linear-gradient(to bottom right, #314F71, #4A4176) 
+}
+
+.weather-tornado {
+    background-image: linear-gradient(to bottom right, #939393, #e47977c5) 
+}
+
+.weather-clear.weather-cold { --color-start: #C94926; --color-end: #BB9F34; }
+.weather-clear.weather-hot { --color-start: #89a1dd; --color-end: #E4E5E7; }
+
+background-image: linear-gradient(to bottom right, #0b0b20, #4e4e50);

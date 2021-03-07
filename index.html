@@ -10,38 +10,32 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    
-   <div class="app-wrapper">
-       <div class="container">
-           <!--Search Box-->
-           <div class="city-search">
-               <input type="text" class="search-box" autocomplete="off" placeholder="Enter your city name...">
-               <div class="todays-date"></div>
-           </div>
+    <div class="container">
+        <header>
+            <!-- <h2>world wide weather</h2>
+            <p class="app-description">
+                Search for the weather in any city across the world.
+                The search will return the temperature and weather description, as well as other information such as humidity and wind speed.
+            </p> -->
+            <input type="text" placeholder="Enter city name..." autocomplete="off" class="search-box">
+            <div class="date"></div>
+        </header>
 
-           <!--Main Content-->
-           <main>
-               <div class="weather-icon"><img src="" alt="" class="weather-img"></div>
+        <div class="weather-info">
+            <div class="weather-icon"><img src=""></div>
+            <div class="current-temp"></div>
+            <div class="weather-description"></div>
+            <div class="min-max"></div>
+            <div class="city"></div>
+        </div>
 
-               <div class="temperature"></div>
-               <div class="weather-description"></div>
-
-               <div class="min-max"></div>
-
-               <div class="location"></div>
-           </main>
-
-           <!--Extra Weather Info-->
-           <div class="extra-info">
-               <div class="wind-speed"><p>Wind Speed</p><span></span></div>
-               <div class="humidity"><p>Humidity</p> <span></span></div>
-               <div class="feels-like"><p>Feels Like</p> <span></span></div>
-           </div>
-       </div>
-   </div>
-
-   
-
+        <!--Extra Weather Information-->
+        <div class="extra-weather-info">
+            <div class="wind-speed"><p> </p> <span></span></div>
+            <div class="humidity"><p></p> <span></span></div>
+            <div class="feels-like"><p> </p> <span></span></div>
+        </div>
+    </div>
    
 
     <!--JavaScript Link-->

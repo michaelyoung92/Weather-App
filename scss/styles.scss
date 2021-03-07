@@ -1,108 +1,100 @@
-//Google fonts link
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
-@import 'weather-icons-wind.min.css';
-@import 'weather-icons.min.css';
+//Font link
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
-*{
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body{
-    font-family: 'montserrat';
-    background-image: linear-gradient(to bottom right, #95E1D3, #bccea6);
-    //Clear and night
-    // background-image: linear-gradient(to bottom right, #0b0b20, #4e4e50);
+    font-family: 'montserrat', sans-serif;
+    background-image: linear-gradient(to bottom right, #95e1d3, #bccea6);
     color: #fff;
 }
 
 .container{
-    width: 90%;
-    max-width: 640px;
+    width: 95%;
     margin: 0 auto;
+    padding: 2em 0;
+    max-width: 700px;
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    text-align: center;
-    padding: 1em 0;
     min-height: 100vh;
 }
 
-input{
-    width: 250px;
-    border: none;
-    padding: 1em;
-    border-radius: 25px 8px;
-    outline: none;
-    background-color: rgba(255, 255, 255, 0.3);
-    color: #fff;
-    font-size: 1em;
-    margin-bottom: 1em;
-}
+header{
+    h2{
+        text-transform: capitalize;
+        font-size: 3.7em;
+        margin-bottom: 0.3em;
+    }
 
-::placeholder{
-    color: rgba(255, 255, 255, 0.644);
-}
+    input{
+        border: none;
+        outline: none;
+        padding: 1em;
+        border-radius: 5px 15px 5px 15px;
+        background-color: rgba(255, 255, 255, 0.3);
+        color: #fff;
+        text-transform: capitalize;
 
-.todays-date{
-    font-size: 1.4em;
-}
+        &::placeholder{
+            color: rgba(168, 168, 168, 0.9);
+        }
+    }
 
-.weather-icon{
-    margin-bottom: 1em;
-
-    img{
-        width: 280px;
+    p{
+        margin-bottom: 1.5em;
+        line-height: 1.5em;
+        font-size: 1.1em;
     }
 }
 
-.temperature{
-    font-size: 4em;
+.date{
+    font-size: 1.5em;
+    margin-top: 0.5em;
+}
+
+.weather-icon{
+    img{
+        width: 350px;
+        margin-bottom: 1.5em;
+    }
+}
+
+.current-temp{
+    font-size: 7em;
+    font-weight: bold;
+}
+
+.weather-description{
+    font-size: 1.4em;
     font-weight: bold;
 }
 
 .min-max{
-    font-size: 1em;
-    font-weight: 300;
-    margin-bottom: 1em;
+    font-size: 1.1em;
+    font-style: italic;
 }
 
-main{
+.city{
+    font-size: 2.2em;
+    font-weight: bold;
+    margin-top: 0.6em;
+}
+
+.extra-weather-info{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.location{
-    font-weight: 600;
-    font-size: 1.8em;
-}
-
-.extra-info{
-    display: none;
-}
-
-.extra-info.show{
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.9em;
+    width: 600px;
 
     p{
         font-weight: bold;
+        text-transform: capitalize;
     }
 }
-
-.weather-description{
-    font-style: 1.2em;
-    margin-bottom: 0.5em;
-    text-transform: capitalize;
-    font-weight: bold;
-}
-
-@import 'media-queries';
