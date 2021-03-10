@@ -23,6 +23,20 @@ function getData(city) {
 function displayData(weather) {
     console.log(weather);
 
+    //Change Layout
+    const container = document.querySelector('.container');
+    container.classList.add('change-layout');
+
+    //Show Content
+    const weatherInfo = document.querySelector('.weather-info');
+    const extraWeatherInfo = document.querySelector('.extra-weather-info');
+    weatherInfo.classList.add('show');
+    extraWeatherInfo.classList.add('show-extra');
+
+    //Hide Content
+    const appIntro = document.querySelector('.app-description');
+    appIntro.classList.add('hide');
+
     //Set Todays Date
     let date = document.querySelector('.date');
     let today = new Date();
@@ -52,7 +66,7 @@ function displayData(weather) {
     //Set Current Temerature
     let currentTemp = document.querySelector('.current-temp');
     let weatherTemp = Math.round(weather.list[0].main.temp);
-    currentTemp.innerText = weatherTemp + "°c";
+    currentTemp.innerText = weatherTemp + "°C";
 
     //Set Weather Description
     let weatherDescription = document.querySelector('.weather-description');
@@ -62,12 +76,13 @@ function displayData(weather) {
     let minMax = document.querySelector('.min-max');
     let weatherMin = Math.round(weather.list[0].main.temp_min);
     let weatherMax = Math.round(weather.list[0].main.temp_max);
-    minMax.innerText = weatherMin + "°c / " + weatherMax + "°c";
+    minMax.innerText = weatherMin + "°C / " + weatherMax + "°C";
 
     //Set City Name
     let cityName = document.querySelector('.city');
     let weatherCityName = weather.city.name;
-    cityName.innerText = weatherCityName;
+    let country = weather.city.country;
+    cityName.innerText = weatherCityName + ", " + country;
 
     //Set Wind Speed
     let windSpeed = document.querySelector('.wind-speed span');
@@ -82,7 +97,28 @@ function displayData(weather) {
     //Set Feels Like Temperature
     let feelsLike = document.querySelector('.feels-like span');
     let weatherFeelsLike = Math.round(weather.list[0].main.feels_like);
-    feelsLike.innerText = weatherFeelsLike + "°c";
+    feelsLike.innerText = weatherFeelsLike + "°C";
+
+    //Celcius / Farennheit Convertor
+    const button = document.querySelector('.btn');
+
+    //Show Button
+    button.classList.add('show');
+    button.addEventListener('click', () => {
+        button.classList.toggle('btn-change');
+
+        // if(button.innerText == "°C") {
+        //     button.innerText = "°F";
+        //     currentTemp.innerText = (Math.round(weatherTemp * 1.8 + 32)) + "°F";
+        //     minMax.innerText = (Math.round(weatherMin * 1.8 + 32)) + "°F / " + (Math.round(weatherMax * 1.8 + 32)) + "°F";
+        //     feelsLike.innerText = (Math.round(weatherFeelsLike * 1.8 + 32))+ "°F";
+        // } else {
+        //     button.innerText = "°C";
+        //     currentTemp.innerText = weatherTemp + "°C";
+        //     minMax.innerText = weatherMin + "°C / " + weatherMax + "°C";
+        //     feelsLike.innerText = weatherFeelsLike + "°C";
+        // }
+    });
 }
 
 //Return Todays Date
@@ -101,3 +137,5 @@ function todaysDate(d) {
 
     return `${day} ${date} ${month} ${year}`;
 }
+
+ 

@@ -11,17 +11,28 @@
 </head>
 <body>
     <div class="container">
+        <!--Celcius / Farehnnhiet Switch-->
+        <div class="btn">°c</div>
+        
         <header>
-            <!-- <h2>world wide weather</h2>
-            <p class="app-description">
-                Search for the weather in any city across the world.
-                The search will return the temperature and weather description, as well as other information such as humidity and wind speed.
-            </p> -->
+            <!--App Description-->
+            <div class="app-description">
+                <h2>world wide weather</h2>
+                <p>
+                    Search for the weather in any city across the world.
+                    The search will return the temperature and weather description, as well as other information such as humidity and wind speed.
+                </p>
+            </div>
+
+            <!--Search Box-->
             <input type="text" placeholder="Enter city name..." autocomplete="off" class="search-box">
-            <input type="submit" class="submit">
+            <input type="submit" class="submit" value="Go">
+
+            <!--Date-->
             <div class="date"></div>
         </header>
 
+        <!--Weather Info-->
         <div class="weather-info">
             <div class="weather-icon"><img src=""></div>
             <div class="current-temp"></div>

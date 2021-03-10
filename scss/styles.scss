@@ -21,7 +21,7 @@ body{
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     min-height: 100vh;
 }
@@ -29,7 +29,7 @@ body{
 header{
     h2{
         text-transform: capitalize;
-        font-size: 3.7em;
+        font-size: 3em;
         margin-bottom: 0.3em;
     }
 
@@ -50,7 +50,7 @@ header{
     p{
         margin-bottom: 1.5em;
         line-height: 1.5em;
-        font-size: 1.1em;
+        font-size: 1em;
     }
 }
 
@@ -58,20 +58,45 @@ header{
     cursor: pointer;
 }
 
+.btn{
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    display: none;
+    width: 35px;
+    margin: 0 auto;
+    padding: 0.5em;
+    border-radius: 100%;
+    cursor: pointer;
+    position: absolute;
+    top:1em;
+    right:1em;
+    transition: background-color 0.5s ease-in-out;
+    text-transform: uppercase;
+}
+
+.btn-change{
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #A6D9C0;
+}
+
 .date{
     font-size: 1.5em;
     margin-top: 0.5em;
 }
 
+.weather-info{
+    display: none;
+}
+
 .weather-icon{
     img{
-        width: 350px;
-        margin-bottom: 1.5em;
+        width: 280px;
+        margin-bottom: 1em;
     }
 }
 
 .current-temp{
-    font-size: 7em;
+    font-size: 3.5em;
     font-weight: bold;
 }
 
@@ -86,19 +111,35 @@ header{
 }
 
 .city{
-    font-size: 2.2em;
+    font-size: 2em;
     font-weight: bold;
     margin-top: 0.6em;
 }
 
 .extra-weather-info{
-    display: flex;
+    display: none;
     justify-content: space-between;
-    align-items: center;
+    align-self: center;
     width: 600px;
 
     p{
         font-weight: bold;
         text-transform: capitalize;
     }
+}
+
+.change-layout{
+    justify-content: space-between;
+}
+
+.show{
+    display: block;
+}
+
+.show-extra{
+    display: flex;
+}
+
+.hide{
+    display: none;
 }
