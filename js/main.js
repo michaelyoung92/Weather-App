@@ -99,6 +99,60 @@ function displayData(weather) {
     let humidity = document.querySelector('.humidity span');
     let weatherHumidity = weather.main.humidity;
     humidity.innerText = weatherHumidity + "%";
+
+    //Change background colour to match weather
+    const colorList = {
+        Clear: {
+            color1: '#7AE7C7',
+            color2: '#72C1E1'
+        },
+        Clear5: {
+            color1: '#89a1dd',
+            color2: '#E4E5E7'
+        },
+        Clear15: {
+            color1: '#C94926',
+            color2: '#BB9F34'
+        },
+        Clouds: {
+            color1: '#F981BB',
+            color2: '#698b8b'
+        },
+        Drizzle: {
+            color1: '#b2c9c8',
+            color2: '#72C1E1'
+        },
+        Fog: {
+            color1: '#C5B2A6',
+            color2: '#7F7E84'
+        },
+        Rain: {
+            color1: '#504AC4',
+            color2: '#59AED1'
+        },
+        Snow: {
+            color1: '#bfc9cf',
+            color2: '#77BDE0'
+        },
+        Thunderstorms: {
+            color1: '#314F71',
+            color2: '#4A4176'
+        },
+        Tornado: {
+            color1: '#939393',
+            color2: '#e47977c5'
+        }
+    }
+
+    const body = document.querySelector('body');
+
+    const {color1, color2} = weatherTemp < 5 && weatherType == 'Clear'
+        ? colorList.Clear5
+        : weatherTemp > 15 && weatherType == 'Clear'
+            ? colorList.Clear15
+            : colorList[weatherType];
+
+    body.style.backgroundImage = `linear-gradient(to bottom right, ${color1}, ${color2})`;
 }
 
 //Return Todays Date

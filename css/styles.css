@@ -84,8 +84,17 @@ header p {
 .weather-icon img {
   width: 280px;
   margin-bottom: 1em;
+  animation: zoom 5s infinite;
 }
 
+@keyframes zoom {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(100deg);
+  }
+}
 .current-temp {
   font-size: 3.5em;
   font-weight: bold;
