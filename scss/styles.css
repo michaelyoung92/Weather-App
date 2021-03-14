@@ -84,38 +84,11 @@ header p {
 .weather-icon img {
   width: 280px;
   margin-bottom: 1em;
+  animation: zoom 5s infinite;
 }
 
-.spin {
-  animation: spin 5s infinite;
-}
-
-.move {
-  animation: move 6s infinite linear;
-}
-
-@keyframes move {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(20px);
-  }
-  50% {
-    transform: translateX(0px);
-  }
-  75% {
-    transform: translateX(-20px);
-  }
-}
-@keyframes spin {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-}
+@keyframes move {}
+@keyframes spin {}
 .current-temp {
   font-size: 3.5em;
   font-weight: bold;

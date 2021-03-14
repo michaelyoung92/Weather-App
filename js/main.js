@@ -62,8 +62,18 @@ function displayData(weather) {
     weatherIconsList.forEach(icon => {
         if (icon == weatherType) {
             weatherIcon.src = `img/svg/${icon}.svg`;
+            weatherIcon.classList = '';
+
+            if(icon == 'Clear'){
+                weatherIcon.classList.add('spin');
+            } else if(icon == 'Clouds' || icon == 'Rain' || icon == 'Drizzle' || icon == 'Thunderstorm') {
+                weatherIcon.classList.add('move');
+            }
         }
     });
+
+    //Set appropriate animation
+
 
     //Show Weather Data
     let currentTemp = document.querySelector('.current-temp');
@@ -153,6 +163,36 @@ function displayData(weather) {
             : colorList[weatherType];
 
     body.style.backgroundImage = `linear-gradient(to bottom right, ${color1}, ${color2})`;
+
+    const convertCToF = (celcius) => (celcius * (9 / 5)) + 32
+    const convertFToC = (fahrenheit) => (5 * (fahrenheit - 32)) / 9
+
+    class Temperature {
+        constructor(value, unit) {
+            this.value = value
+            this.unit = unit
+        }
+
+        convert() {
+            switch (this.unit) {
+            case 'c':
+                this.value = convertCToF(this.value)
+                this.unit = 'f'
+                return this
+            case 'f':
+                this.value = convertFToC(this.value)
+                this.unit = 'c'
+                return this
+            default:
+                return this
+            }
+        }
+    }
+
+    const test = document.querySelector('.test');
+    let test1 = new Temperature(weatherTemp, 'c').convert();
+    test.innerText = Math.round(test1.value) + '°' + test1.unit;
+    console.log(test1);
 }
 
 //Return Todays Date
