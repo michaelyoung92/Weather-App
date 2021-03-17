@@ -1,25 +1,72 @@
+//Animate app description text
+
+//Intro heading
+const introHeading = document.querySelector('.app-description h2');
+const headingText = introHeading.textContent;
+const splitHeading = headingText.split('');
+introHeading.textContent = '';
+
+//Intro text
+const introText = document.querySelector('.app-description p');
+const text = introText.textContent;
+introText.textContent = '';
+introText.innerHTML += text;
+
+//Search box
+const search = document.querySelector('.search-box');
+
+//Animate intro heading
+splitHeading.forEach(letter => {
+    introHeading.innerHTML += '<span>' + letter + '</span>';
+});
+
+let char = 0;
+let timer = setInterval(() => {
+    const span = introHeading.querySelectorAll('span')[char];
+    span.classList.add('fade');
+    char++;
+
+    if(char === splitHeading.length){
+        complete();
+        return;
+    }
+}, 60);
+
+function complete(){
+    clearInterval(timer);
+    timer = null;
+}
+
+//Animate intro text
+setTimeout(() => {
+    introText.classList.add('fade');
+}, 1500);
+
+//Animate search box
+setTimeout(() => {
+    search.classList.add('fade');
+}, 2500);
+
+//Weather App
 const api = {
     key: "39b44eaa66c8464bda8ff71fc2a80638",
     link: "https://api.openweathermap.org/data/2.5/"
 }
 
-const submit = document.querySelector('.submit');
-const search = document.querySelector('.search-box');
-
-submit.addEventListener('click', (e) => {
-    e.preventDefault();
-    getData(search.value);
+search.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter') {
+        e.preventDefault();
+        getData(search.value);
+    }
 });
 
-//Fetch Weather Data
+// Fetch Weather Data
 function getData(city) {
     fetch(`${api.link}weather?q=${city}&units=metric&appid=${api.key}`)
         .then(weatherData => {
             return weatherData.json();
         }).then(displayData);
 }
-
-
 
 //Display Weather Data
 function displayData(weather) {
@@ -64,10 +111,12 @@ function displayData(weather) {
             weatherIcon.src = `img/svg/${icon}.svg`;
             weatherIcon.classList = '';
 
-            if(icon == 'Clear'){
+            if(icon == 'Clear') { 
                 weatherIcon.classList.add('spin');
-            } else if(icon == 'Clouds' || icon == 'Rain' || icon == 'Drizzle' || icon == 'Thunderstorm') {
+            } else if(icon == 'Clouds') {
                 weatherIcon.classList.add('move');
+            } else if(icon == 'Snow') {
+                
             }
         }
     });
@@ -164,35 +213,35 @@ function displayData(weather) {
 
     body.style.backgroundImage = `linear-gradient(to bottom right, ${color1}, ${color2})`;
 
-    const convertCToF = (celcius) => (celcius * (9 / 5)) + 32
-    const convertFToC = (fahrenheit) => (5 * (fahrenheit - 32)) / 9
+    // const convertCToF = (celcius) => (celcius * (9 / 5)) + 32
+    // const convertFToC = (fahrenheit) => (5 * (fahrenheit - 32)) / 9
 
-    class Temperature {
-        constructor(value, unit) {
-            this.value = value
-            this.unit = unit
-        }
+    // class Temperature {
+    //     constructor(value, unit) {
+    //         this.value = value
+    //         this.unit = unit
+    //     }
 
-        convert() {
-            switch (this.unit) {
-            case 'c':
-                this.value = convertCToF(this.value)
-                this.unit = 'f'
-                return this
-            case 'f':
-                this.value = convertFToC(this.value)
-                this.unit = 'c'
-                return this
-            default:
-                return this
-            }
-        }
-    }
+    //     convert() {
+    //         switch (this.unit) {
+    //         case 'c':
+    //             this.value = convertCToF(this.value)
+    //             this.unit = 'f'
+    //             return this
+    //         case 'f':
+    //             this.value = convertFToC(this.value)
+    //             this.unit = 'c'
+    //             return this
+    //         default:
+    //             return this
+    //         }
+    //     }
+    // }
 
-    const test = document.querySelector('.test');
-    let test1 = new Temperature(weatherTemp, 'c').convert();
-    test.innerText = Math.round(test1.value) + '°' + test1.unit;
-    console.log(test1);
+    // const test = document.querySelector('.test');
+    // let test1 = new Temperature(weatherTemp, 'c').convert();
+    // test.innerText = Math.round(test1.value) + '°' + test1.unit;
+    // console.log(test1);
 }
 
 //Return Todays Date

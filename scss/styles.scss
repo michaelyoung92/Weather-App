@@ -16,7 +16,7 @@ body{
 .container{
     width: 95%;
     margin: 0 auto;
-    padding: 2em 0;
+    padding: 1em 0;
     max-width: 700px;
     text-align: center;
     display: flex;
@@ -33,24 +33,52 @@ header{
         margin-bottom: 0.3em;
     }
 
-    input{
-        border: none;
-        outline: none;
-        padding: 1em;
-        border-radius: 5px 15px 5px 15px;
-        background-color: rgba(255, 255, 255, 0.3);
-        color: #fff;
-        text-transform: capitalize;
-
-        &::placeholder{
-            color: rgba(168, 168, 168, 0.9);
-        }
-    }
-
     p{
         margin-bottom: 1.5em;
         line-height: 1.5em;
         font-size: 1em;
+    }
+}
+
+.search-box{
+    border: none;
+    outline: none;
+    padding: 1em;
+    border-radius: 5px 15px 5px 15px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    text-transform: capitalize;
+    opacity: 0;
+    transition: all 0.8s ease;
+
+    &.fade{
+        opacity: 1;
+    }
+
+    &::placeholder{
+        color: rgba(168, 168, 168, 0.9);
+    }
+}
+
+.app-description{
+    max-width: 550px;
+
+    p{
+        opacity: 0;
+        transition: all 0.8s ease;
+    }
+
+    p.fade{
+        opacity: 1;
+    }
+
+    span{
+        opacity: 0;
+        transition: all 1s ease;
+    }
+
+    span.fade{
+        opacity: 1;
     }
 }
 
@@ -90,7 +118,7 @@ header{
 
 .weather-icon{
     img{
-        width: 280px;
+        width: 230px;
         margin-bottom: 1em;
     }
 }
@@ -101,6 +129,10 @@ header{
 
 .move{
     animation: move 6s infinite linear;
+}
+
+.change-color{
+    color: pink;
 }
 
 @keyframes move{
@@ -149,11 +181,13 @@ header{
     display: none;
     justify-content: space-between;
     align-self: center;
-    width: 600px;
+    width: 100%;
+    max-width: 300px;
 
     p{
         font-weight: bold;
         text-transform: capitalize;
+        font-size: 0.7em;
     }
 }
 
@@ -172,3 +206,5 @@ header{
 .hide{
     display: none;
 }
+
+@import 'media-queries';

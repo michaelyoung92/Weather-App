@@ -1,4 +1,17 @@
-@media screen and(min-width:640px) {
+@media screen and(min-width:640px) and(min-height:700px) {
+    .container{
+        padding: 4em 0;
+    }
 
-    
+    .weather-icon img{
+        width: 280px;
+    }
+
+    .extra-weather-info{
+        max-width: none;
+
+        p{
+            font-size: 1.1em;
+        }
+    }
 }
