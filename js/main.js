@@ -96,14 +96,14 @@ function displayData(weather) {
     let weatherIcon = document.querySelector('.weather-icon img');
     let weatherType = weather.weather[0].main;
     const weatherIconsList = [
-        'Clear',
-        'Clouds',
-        'Drizzle',
-        'Fog',
-        'Rain',
-        'Snow',
-        'Thunderstorm',
-        'Tornado'
+        'clear',
+        'clouds',
+        'drizzle',
+        'fog',
+        'rain',
+        'snow',
+        'thunderstorm',
+        'tornado'
     ]
 
     weatherIconsList.forEach(icon => {
@@ -111,12 +111,10 @@ function displayData(weather) {
             weatherIcon.src = `img/svg/${icon}.svg`;
             weatherIcon.classList = '';
 
-            if(icon == 'Clear') { 
+            if(icon == 'clear') { 
                 weatherIcon.classList.add('spin');
-            } else if(icon == 'Clouds') {
+            } else if(icon == 'clouds') {
                 weatherIcon.classList.add('move');
-            } else if(icon == 'Snow') {
-                
             }
         }
     });
