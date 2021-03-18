@@ -94,7 +94,7 @@ function displayData(weather) {
 
     //Set Weather Icon
     let weatherIcon = document.querySelector('.weather-icon img');
-    let weatherType = weather.weather[0].main;
+    let weatherType = weather.weather[0].main.toLowerCase();
     const weatherIconsList = [
         'clear',
         'clouds',
@@ -107,7 +107,7 @@ function displayData(weather) {
     ]
 
     weatherIconsList.forEach(icon => {
-        if (icon == weatherType) {
+        if (icon == weatherType.toLowerCase()) {
             weatherIcon.src = `img/svg/${icon}.svg`;
             weatherIcon.classList = '';
 
@@ -203,9 +203,9 @@ function displayData(weather) {
 
     const body = document.querySelector('body');
 
-    const {color1, color2} = weatherTemp < 5 && weatherType == 'clear'
+    const {color1, color2} = weatherTemp < 5 && weatherType == 'Clear'
         ? colorList.clear5
-        : weatherTemp > 15 && weatherType == 'clear'
+        : weatherTemp > 15 && weatherType == 'Clear'
             ? colorList.clear15
             : colorList[weatherType];
 
