@@ -250,7 +250,7 @@ function todaysDate(d) {
         "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
     ];
     const days = [
-        "Sun","Mon","Tues","Wed","thurs","Fri","Sat"
+        "Sun","Mon","Tues","Wed","Thurs","Fri","Sat"
     ];
 
     let day = days[d.getDay()];
