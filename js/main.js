@@ -203,9 +203,9 @@ function displayData(weather) {
 
     const body = document.querySelector('body');
 
-    const {color1, color2} = weatherTemp < 5 && weatherType == 'Clear'
+    const {color1, color2} = weatherTemp < 5 && weatherType == 'clear'
         ? colorList.clear5
-        : weatherTemp > 15 && weatherType == 'Clear'
+        : weatherTemp > 15 && weatherType == 'clear'
             ? colorList.clear15
             : colorList[weatherType];
 
