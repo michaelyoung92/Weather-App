@@ -108,7 +108,7 @@ function displayData(weather) {
 
     weatherIconsList.forEach(icon => {
         if (icon == weatherType.toLowerCase()) {
-            weatherIcon.src = `img/svg/${icon}.svg`;
+            weatherIcon.src = `img/${icon}.svg`;
             weatherIcon.classList = '';
 
             if(icon == 'clear') { 
