@@ -161,43 +161,43 @@ function displayData(weather) {
 
     //Change background colour to match weather
     const colorList = {
-        Clear: {
+        clear: {
             color1: '#7AE7C7',
             color2: '#72C1E1'
         },
-        Clear5: {
+        clear5: {
             color1: '#89a1dd',
             color2: '#E4E5E7'
         },
-        Clear15: {
+        clear15: {
             color1: '#C94926',
             color2: '#BB9F34'
         },
-        Clouds: {
+        clouds: {
             color1: '#F981BB',
             color2: '#698b8b'
         },
-        Drizzle: {
+        drizzle: {
             color1: '#b2c9c8',
             color2: '#72C1E1'
         },
-        Fog: {
+        fog: {
             color1: '#C5B2A6',
             color2: '#7F7E84'
         },
-        Rain: {
+        rain: {
             color1: '#504AC4',
             color2: '#59AED1'
         },
-        Snow: {
+        snow: {
             color1: '#bfc9cf',
             color2: '#77BDE0'
         },
-        Thunderstorms: {
+        thunderstorms: {
             color1: '#314F71',
             color2: '#4A4176'
         },
-        Tornado: {
+        tornado: {
             color1: '#939393',
             color2: '#e47977c5'
         }
@@ -205,10 +205,10 @@ function displayData(weather) {
 
     const body = document.querySelector('body');
 
-    const {color1, color2} = weatherTemp < 5 && weatherType == 'Clear'
-        ? colorList.Clear5
-        : weatherTemp > 15 && weatherType == 'Clear'
-            ? colorList.Clear15
+    const {color1, color2} = weatherTemp < 5 && weatherType == 'clear'
+        ? colorList.clear5
+        : weatherTemp > 15 && weatherType == 'clear'
+            ? colorList.clear15
             : colorList[weatherType];
 
     body.style.backgroundImage = `linear-gradient(to bottom right, ${color1}, ${color2})`;
