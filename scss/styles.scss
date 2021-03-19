@@ -14,7 +14,7 @@ body{
 }
 
 .container{
-    width: 95%;
+    width: 90%;
     margin: 0 auto;
     padding: 1em 0;
     max-width: 700px;
@@ -26,25 +26,11 @@ body{
     height: 100vh;
 }
 
-header{
-    h2{
-        text-transform: capitalize;
-        font-size: 3em;
-        margin-bottom: 0.3em;
-    }
-
-    p{
-        margin-bottom: 1.5em;
-        line-height: 1.5em;
-        font-size: 1em;
-    }
-}
-
 .search-box{
     border: none;
     outline: none;
     padding: 1em;
-    border-radius: 5px 15px 5px 15px;
+    border-radius: 25px;
     background-color: rgba(255, 255, 255, 0.3);
     color: #fff;
     text-transform: capitalize;
@@ -64,52 +50,59 @@ header{
 .app-description{
     max-width: 550px;
 
-    p{
-        opacity: 0;
-        transition: all 0.8s ease;
+    h2{
+        text-transform: capitalize;
+        font-size: 2.8em;
+        margin-bottom: 0.3em;
     }
 
-    p.fade{
-        opacity: 1;
+    p{
+        margin-bottom: 1.5em;
+        line-height: 1.5em;
+        font-size: 1em;
+        opacity: 0;
+        transition: all 0.8s ease;
+
+        &.fade{
+            opacity: 1;
+        }
     }
 
     span{
         opacity: 0;
         transition: all 1s ease;
+
+        &.fade{
+            opacity: 1;
+        }
     }
-
-    span.fade{
-        opacity: 1;
-    }
 }
 
-.submit{
-    cursor: pointer;
-}
+//Celsius to Fahrenheit
 
-.btn{
-    background-color: rgba(255, 255, 255, 0.3);
-    color: #fff;
-    display: none;
-    width: 35px;
-    margin: 0 auto;
-    padding: 0.5em;
-    border-radius: 100%;
-    cursor: pointer;
-    position: absolute;
-    top:1em;
-    right:1em;
-    transition: background-color 0.5s ease-in-out;
-    text-transform: uppercase;
-}
+// .btn{
+//     background-color: rgba(255, 255, 255, 0.3);
+//     color: #fff;
+//     display: none;
+//     width: 35px;
+//     margin: 0 auto;
+//     padding: 0.5em;
+//     border-radius: 100%;
+//     cursor: pointer;
+//     position: absolute;
+//     top:1em;
+//     right:1em;
+//     transition: background-color 0.5s ease-in-out;
+//     text-transform: uppercase;
+// }
 
-.btn-change{
-    background-color: rgba(255, 255, 255, 0.8);
-    color: #A6D9C0;
-}
+// .btn-change{
+//     background-color: rgba(255, 255, 255, 0.8);
+//     color: #A6D9C0;
+// }
 
 .date{
-    font-size: 1.5em;
+    font-size: 1em;
     margin-top: 0.5em;
 }
 
@@ -119,10 +112,12 @@ header{
 
 .weather-icon{
     img{
-        width: 230px;
-        margin-bottom: 1em;
+        width: 180px;
+        margin-bottom: 0.5em;
     }
 }
+
+//Weather icon animations
 
 .spin{
     animation: spin 5s infinite;
@@ -130,10 +125,6 @@ header{
 
 .move{
     animation: move 6s infinite linear;
-}
-
-.change-color{
-    color: pink;
 }
 
 @keyframes move{
@@ -157,8 +148,10 @@ header{
     }
 }
 
+//Weather information
+
 .current-temp{
-    font-size: 3.5em;
+    font-size: 2em;
     font-weight: bold;
 }
 
@@ -169,12 +162,12 @@ header{
 }
 
 .min-max{
-    font-size: 1.1em;
+    font-size: 1em;
     font-style: italic;
 }
 
 .city{
-    font-size: 2em;
+    font-size: 1.8em;
     font-weight: bold;
     margin-top: 0.6em;
 }
@@ -187,11 +180,17 @@ header{
     max-width: 300px;
 
     p{
-        font-weight: bold;
         text-transform: capitalize;
-        font-size: 0.7em;
+        font-size: 0.8em;
+    }
+
+    span{
+        font-size: 1.1em;
+        font-weight: bold;
     }
 }
+
+//Edit layout on larger devices
 
 .change-layout{
     justify-content: space-between;
