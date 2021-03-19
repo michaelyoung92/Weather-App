@@ -152,7 +152,7 @@ body {
 }
 
 .change-layout {
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .show {
