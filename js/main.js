@@ -60,6 +60,10 @@ search.addEventListener('keydown', (e) => {
     }
 });
 
+search.addEventListener('focusout', (e) => {
+    getData(search.value);
+});
+
 // Fetch Weather Data
 function getData(city) {
     fetch(`${api.link}weather?q=${city}&units=metric&appid=${api.key}`)
