@@ -60,7 +60,11 @@ search.addEventListener('keydown', (e) => {
     }
 });
 
-search.addEventListener('focusout', (e) => {
+// search.addEventListener('focusout', (e) => {
+//     getData(search.value);
+// });
+
+search.addEventListener('blur', () => {
     getData(search.value);
 });
 

@@ -50,6 +50,7 @@ header{
     text-transform: capitalize;
     opacity: 0;
     transition: all 0.8s ease;
+    font-size: 1em;
 
     &.fade{
         opacity: 1;
@@ -164,6 +165,7 @@ header{
 .weather-description{
     font-size: 1.4em;
     font-weight: bold;
+    text-transform: capitalize;
 }
 
 .min-max{
