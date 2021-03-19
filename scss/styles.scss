@@ -23,7 +23,14 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+}
+
+.five-day-container{
+    width: 90%;
+    margin: 0 auto;
+    padding-bottom: 2em;
+    display: none;
 }
 
 .search-box{
@@ -52,7 +59,7 @@ body{
 
     h2{
         text-transform: capitalize;
-        font-size: 2.8em;
+        font-size: 2.5em;
         margin-bottom: 0.3em;
     }
 
@@ -127,6 +134,10 @@ body{
     animation: move 6s infinite linear;
 }
 
+.zoom{
+    animation: zoom 5s infinite;
+}
+
 @keyframes move{
     0%, 100%{
         transform: translateX(0);
@@ -145,6 +156,14 @@ body{
         transform: rotate(0deg);
     }50%{
         transform: rotate(180deg);
+    }
+}
+
+@keyframes zoom{
+    0%, 100%{
+        transform: scale(1);
+    }50%{
+        transform: scale(1.2);
     }
 }
 
@@ -187,6 +206,32 @@ body{
     span{
         font-size: 1.1em;
         font-weight: bold;
+    }
+}
+
+//Five day forecast
+.five-day-forecast{
+    width: 100%;
+
+    ul{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        list-style-type: none;
+        text-transform: capitalize;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+
+        li{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        li:not(:last-child){
+            margin-bottom: 2em;
+        }
     }
 }
 

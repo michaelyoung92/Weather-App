@@ -60,17 +60,13 @@ search.addEventListener('keydown', (e) => {
     }
 });
 
-// search.addEventListener('focusout', (e) => {
-//     getData(search.value);
-// });
-
 search.addEventListener('blur', () => {
     getData(search.value);
 });
 
 // Fetch Weather Data
 function getData(city) {
-    fetch(`${api.link}weather?q=${city}&units=metric&appid=${api.key}`)
+    fetch(`${api.link}forecast?q=${city}&units=metric&appid=${api.key}`)
         .then(weatherData => {
             return weatherData.json();
         }).then(displayData);
@@ -102,7 +98,7 @@ function displayData(weather) {
 
     //Set Weather Icon
     let weatherIcon = document.querySelector('.weather-icon img');
-    let weatherType = weather.weather[0].main.toLowerCase();
+    let weatherType = weather.list[0].weather[0].main.toLowerCase();
     const weatherIconsList = [
         'clear',
         'clouds',
@@ -116,13 +112,15 @@ function displayData(weather) {
 
     weatherIconsList.forEach(icon => {
         if (icon == weatherType.toLowerCase()) {
-            weatherIcon.src = `img/${icon}.svg`;
             weatherIcon.classList = '';
-
+            weatherIcon.src = `img/${icon}.svg`;
+            
             if(icon == 'clear') { 
                 weatherIcon.classList.add('spin');
-            } else if(icon == 'clouds') {
+            } else if(icon == 'clouds' || icon == 'snow' || icon == 'rain' || icon == 'thunderstorm') {
                 weatherIcon.classList.add('move');
+            } else if(icon == 'fog') {
+                weatherIcon.classList.add('zoom');
             }
         }
     });
@@ -132,17 +130,27 @@ function displayData(weather) {
 
     //Show Weather Data
     let currentTemp = document.querySelector('.current-temp');
-    let weatherTemp = Math.round(weather.main.temp);
+    let weatherTemp = Math.round(weather.list[0].main.temp);
     currentTemp.innerText = weatherTemp + '°C';
     
+    let temps = [];
+    temps.push(weather.list[0].main.temp);
+
+    for(let i = 0; i < 7; i++) {
+        temps.push(weather.list[i].main.temp);
+    }
+
+    //Lowest temp
+    let weatherMin = Math.round(Math.min.apply(Math, temps));
+
+    //Highest temp
+    let weatherMax = Math.round(Math.max.apply(Math, temps));
 
     let minMax = document.querySelector('.min-max');
-    let weatherMin = Math.round(weather.main.temp_min);
-    let weatherMax = Math.round(weather.main.temp_max);
     minMax.innerText = weatherMin + '°C / ' + weatherMax + '°C';
 
     let feelsLike = document.querySelector('.feels-like span');
-    let weatherFeelsLike = Math.round(weather.main.feels_like);
+    let weatherFeelsLike = Math.round(weather.list[0].main.feels_like);
     feelsLike.innerText = weatherFeelsLike + '°C';
 
     //Set Weather Description
@@ -151,18 +159,18 @@ function displayData(weather) {
 
     //Set City Name
     let cityName = document.querySelector('.city');
-    let weatherCityName = weather.name;
-    let country = weather.sys.country;
+    let weatherCityName = weather.city.name;
+    let country = weather.city.country;
     cityName.innerText = weatherCityName + ", " + country;
 
     //Set Wind Speed
     let windSpeed = document.querySelector('.wind-speed span');
-    let weatherWindSpeed = Math.round(weather.wind.speed * 2.23);
+    let weatherWindSpeed = Math.round(weather.list[0].wind.speed * 2.23);
     windSpeed.innerText = weatherWindSpeed + "mph";
 
     //Set Humidity
     let humidity = document.querySelector('.humidity span');
-    let weatherHumidity = weather.main.humidity;
+    let weatherHumidity = weather.list[0].main.humidity;
     humidity.innerText = weatherHumidity + "%";
 
     //Change background colour to match weather
