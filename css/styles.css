@@ -76,6 +76,23 @@ body {
   opacity: 1;
 }
 
+.current-btn {
+  padding: 1em;
+  border: none;
+  border-radius: 20px;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.4);
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.7em;
+  cursor: pointer;
+  transition: all 0.8s ease;
+  opacity: 0;
+}
+.current-btn.fade {
+  opacity: 1;
+}
+
 .date {
   font-size: 1em;
   margin-top: 0.5em;

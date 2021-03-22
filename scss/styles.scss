@@ -85,6 +85,25 @@ body{
     }
 }
 
+//Current button
+.current-btn{
+    padding: 1em;
+    border: none;
+    border-radius: 20px;
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.7em;
+    cursor: pointer;
+    transition: all 0.8s ease;
+    opacity: 0;
+
+    &.fade{
+        opacity: 1;
+    }
+}
+
 //Celsius to Fahrenheit
 
 // .btn{

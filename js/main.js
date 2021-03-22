@@ -15,6 +15,9 @@ introText.innerHTML += text;
 //Search box
 const search = document.querySelector('.search-box');
 
+//Current location button
+let currentBtn = document.querySelector('.current-btn');
+
 //Animate intro heading
 splitHeading.forEach(letter => {
     introHeading.innerHTML += '<span>' + letter + '</span>';
@@ -45,11 +48,12 @@ setTimeout(() => {
 //Animate search box
 setTimeout(() => {
     search.classList.add('fade');
+    currentBtn.classList.add('fade');
 }, 2500);
 
 //Weather App
 const api = {
-    key: "39b44eaa66c8464bda8ff71fc2a80638",
+    key: "10d46d88220b8c34b7e07c861dc1f659",
     link: "https://api.openweathermap.org/data/2.5/"
 }
 
@@ -62,6 +66,27 @@ search.addEventListener('keydown', (e) => {
 
 search.addEventListener('blur', () => {
     getData(search.value);
+});
+
+//Current Location
+currentBtn.addEventListener('click', () => {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(currentLocation);
+    } else {
+        alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
+    }
+    
+    function currentLocation(location) {
+        let lat = location.coords.latitude;
+        let lon = location.coords.longitude;
+        majorCities(lat, lon);
+    }
+    
+    function majorCities(lat, lon) {
+        fetch(`${api.link}forecast?lat=${lat}&lon=${lon}&units=metric&&appid=${api.key}`).then(data => {
+            return data.json();
+        }).then(displayData);
+    }
 });
 
 // Fetch Weather Data
