@@ -98,6 +98,7 @@ body{
     cursor: pointer;
     transition: all 0.8s ease;
     opacity: 0;
+    text-transform: capitalize;
 
     &.fade{
         opacity: 1;
