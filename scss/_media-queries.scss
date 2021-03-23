@@ -15,3 +15,10 @@
         }
     }
 }
+
+//Hover effects
+@media (hover: hover) {
+    .current-btn i:hover{
+        opacity: 0.7;
+    }
+}

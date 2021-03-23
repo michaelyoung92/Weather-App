@@ -71,18 +71,18 @@ search.addEventListener('blur', () => {
 //Current Location
 currentBtn.addEventListener('click', () => {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(currentLocation);
+        navigator.geolocation.getCurrentPosition(coordinates);
     } else {
         alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
     }
     
-    function currentLocation(location) {
+    function coordinates(location) {
         let lat = location.coords.latitude;
         let lon = location.coords.longitude;
-        majorCities(lat, lon);
+        locationData(lat, lon);
     }
     
-    function majorCities(lat, lon) {
+    function locationData(lat, lon) {
         fetch(`${api.link}forecast?lat=${lat}&lon=${lon}&units=metric&&appid=${api.key}`).then(data => {
             return data.json();
         }).then(displayData);
