@@ -24,14 +24,9 @@ body {
   min-height: 100vh;
 }
 
-.five-day-container {
-  width: 90%;
-  margin: 0 auto;
-  padding-bottom: 2em;
-  display: none;
-}
-
 .search-box {
+  display: block;
+  margin: 0 auto;
   border: none;
   outline: none;
   padding: 1em;
@@ -83,13 +78,13 @@ body {
   transition: all 0.8s ease;
   opacity: 0;
   text-transform: capitalize;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .current-btn i {
   font-size: 2em;
   transition: opacity 0.8s ease;
-}
-.current-btn i:focus {
-  outline: none;
+  margin-top: 0.3em;
 }
 .current-btn.fade {
   opacity: 1;
@@ -102,6 +97,44 @@ body {
 
 .weather-info {
   display: none;
+}
+
+.current-temp {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.weather-description {
+  font-size: 1.4em;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.min-max {
+  font-size: 1em;
+  font-style: italic;
+}
+
+.city {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-top: 0.6em;
+}
+
+.extra-weather-info {
+  display: none;
+  justify-content: space-between;
+  align-self: center;
+  width: 100%;
+  max-width: 300px;
+}
+.extra-weather-info p {
+  text-transform: capitalize;
+  font-size: 0.8em;
+}
+.extra-weather-info span {
+  font-size: 1.1em;
+  font-weight: bold;
 }
 
 .weather-icon img {
@@ -151,66 +184,6 @@ body {
     transform: scale(1.2);
   }
 }
-.current-temp {
-  font-size: 2em;
-  font-weight: bold;
-}
-
-.weather-description {
-  font-size: 1.4em;
-  font-weight: bold;
-  text-transform: capitalize;
-}
-
-.min-max {
-  font-size: 1em;
-  font-style: italic;
-}
-
-.city {
-  font-size: 1.8em;
-  font-weight: bold;
-  margin-top: 0.6em;
-}
-
-.extra-weather-info {
-  display: none;
-  justify-content: space-between;
-  align-self: center;
-  width: 100%;
-  max-width: 300px;
-}
-.extra-weather-info p {
-  text-transform: capitalize;
-  font-size: 0.8em;
-}
-.extra-weather-info span {
-  font-size: 1.1em;
-  font-weight: bold;
-}
-
-.five-day-forecast {
-  width: 100%;
-}
-.five-day-forecast ul {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  list-style-type: none;
-  text-transform: capitalize;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-.five-day-forecast ul li {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-.five-day-forecast ul li:not(:last-child) {
-  margin-bottom: 2em;
-}
-
 .change-layout {
   justify-content: space-around;
 }

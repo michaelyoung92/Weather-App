@@ -1,4 +1,4 @@
-//Animate app description text
+//Animate intro text
 
 //Intro heading
 const introHeading = document.querySelector('.app-description h2');
@@ -51,12 +51,17 @@ setTimeout(() => {
     currentBtn.classList.add('fade');
 }, 2500);
 
+
+
 //Weather App
+
+//Api key and url
 const api = {
     key: "10d46d88220b8c34b7e07c861dc1f659",
     link: "https://api.openweathermap.org/data/2.5/"
 }
 
+//Listen for search action
 search.addEventListener('keydown', (e) => {
     if(e.key === 'Enter') {
         e.preventDefault();
@@ -68,7 +73,7 @@ search.addEventListener('blur', () => {
     getData(search.value);
 });
 
-//Current Location
+//Listen for button click
 currentBtn.addEventListener('click', () => {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(coordinates);
@@ -76,12 +81,14 @@ currentBtn.addEventListener('click', () => {
         alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
     }
     
+    //Get user coordinates
     function coordinates(location) {
         let lat = location.coords.latitude;
         let lon = location.coords.longitude;
         locationData(lat, lon);
     }
     
+    //Fetch weather data for user location
     function locationData(lat, lon) {
         fetch(`${api.link}forecast?lat=${lat}&lon=${lon}&units=metric&&appid=${api.key}`).then(data => {
             return data.json();
@@ -119,7 +126,6 @@ function displayData(weather) {
     let date = document.querySelector('.date');
     let today = new Date();
     date.innerText = todaysDate(today);
-    
 
     //Set Weather Icon
     let weatherIcon = document.querySelector('.weather-icon img');
@@ -150,14 +156,12 @@ function displayData(weather) {
         }
     });
 
-    //Set appropriate animation
-
-
     //Show Weather Data
     let currentTemp = document.querySelector('.current-temp');
     let weatherTemp = Math.round(weather.list[0].main.temp);
     currentTemp.innerText = weatherTemp + '°C';
     
+    //Return array of temperatures for next 48 hours
     let temps = [];
     temps.push(weather.list[0].main.temp);
 
@@ -171,9 +175,11 @@ function displayData(weather) {
     //Highest temp
     let weatherMax = Math.round(Math.max.apply(Math, temps));
 
+    //Set high and low temperatures
     let minMax = document.querySelector('.min-max');
     minMax.innerText = weatherMin + '°C / ' + weatherMax + '°C';
 
+    //Set 'feels like' temperature
     let feelsLike = document.querySelector('.feels-like span');
     let weatherFeelsLike = Math.round(weather.list[0].main.feels_like);
     feelsLike.innerText = weatherFeelsLike + '°C';
@@ -251,39 +257,9 @@ function displayData(weather) {
             : colorList[weatherType];
 
     body.style.backgroundImage = `linear-gradient(to bottom right, ${color1}, ${color2})`;
-
-    // const convertCToF = (celcius) => (celcius * (9 / 5)) + 32
-    // const convertFToC = (fahrenheit) => (5 * (fahrenheit - 32)) / 9
-
-    // class Temperature {
-    //     constructor(value, unit) {
-    //         this.value = value
-    //         this.unit = unit
-    //     }
-
-    //     convert() {
-    //         switch (this.unit) {
-    //         case 'c':
-    //             this.value = convertCToF(this.value)
-    //             this.unit = 'f'
-    //             return this
-    //         case 'f':
-    //             this.value = convertFToC(this.value)
-    //             this.unit = 'c'
-    //             return this
-    //         default:
-    //             return this
-    //         }
-    //     }
-    // }
-
-    // const test = document.querySelector('.test');
-    // let test1 = new Temperature(weatherTemp, 'c').convert();
-    // test.innerText = Math.round(test1.value) + '°' + test1.unit;
-    // console.log(test1);
 }
 
-//Return Todays Date
+//Return todays date
 function todaysDate(d) {
     const months = [
         "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
