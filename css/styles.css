@@ -88,6 +88,9 @@ body {
   font-size: 2em;
   transition: opacity 0.8s ease;
 }
+.current-btn i:focus {
+  outline: none;
+}
 .current-btn.fade {
   opacity: 1;
 }

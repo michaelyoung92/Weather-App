@@ -97,6 +97,10 @@ body{
     i{
         font-size: 2em;
         transition: opacity 0.8s ease;
+
+        &:focus{
+            outline: none;
+        }
     }
 
     &.fade{
