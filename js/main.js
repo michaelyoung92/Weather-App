@@ -64,18 +64,40 @@ const api = {
 //Listen for search action
 search.addEventListener('keydown', (e) => {
     if(e.key === 'Enter') {
-        e.preventDefault();
-        getData(search.value);
+        //Lose focus on input search
+        search.blur();
+        if(search.value !== ''){
+            getData(search.value);
+        } else {
+            alert('Please enter city name');
+        }
     }
 });
 
+//Target 'done' button on iphone
 search.addEventListener('blur', () => {
-    getData(search.value);
+    if(search.value !== ''){
+        getData(search.value);
+    } else {
+        alert('Please enter city name');
+    }
 });
 
 //Listen for button click
 currentBtn.addEventListener('click', () => {
+    //Clear search box
+    search.value = '';
+    //Declare loading animation container
+    const loadContainer = document.querySelector('.load-container');
+    //Declare container
+    const container = document.querySelector('.container');
     if (navigator.geolocation) {
+        //Add load animation
+        setTimeout(() => {
+            loadContainer.classList.toggle('show');
+            //Fade out background
+            container.classList.toggle('fade-out');
+        }, 700);
         navigator.geolocation.getCurrentPosition(coordinates);
     } else {
         alert('It seems like Geolocation, which is required for this page, is not enabled in your browser. Please use a browser which supports it.');
@@ -92,7 +114,12 @@ currentBtn.addEventListener('click', () => {
     function locationData(lat, lon) {
         fetch(`${api.link}forecast?lat=${lat}&lon=${lon}&units=metric&&appid=${api.key}`).then(data => {
             return data.json();
-        }).then(displayData);
+        }).then(displayData).then(() => {
+            //Remove loading animation
+            loadContainer.classList.toggle('show');
+            //Fade in background
+            container.classList.toggle('fade-out');
+        });
     }
 });
 
@@ -106,7 +133,6 @@ function getData(city) {
 
 //Display Weather Data
 function displayData(weather) {
-    console.log(weather);
 
     //Change Layout
     const container = document.querySelector('.container');
