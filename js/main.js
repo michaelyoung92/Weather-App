@@ -68,8 +68,6 @@ search.addEventListener('keydown', (e) => {
         search.blur();
         if(search.value !== ''){
             getData(search.value);
-        } else {
-            alert('Please enter city name');
         }
     }
 });
@@ -78,9 +76,7 @@ search.addEventListener('keydown', (e) => {
 search.addEventListener('blur', () => {
     if(search.value !== ''){
         getData(search.value);
-    } else {
-        alert('Please enter city name');
-    }
+    } 
 });
 
 //Listen for button click
@@ -189,7 +185,6 @@ function displayData(weather) {
     
     //Return array of temperatures for next 48 hours
     let temps = [];
-    temps.push(weather.list[0].main.temp);
 
     for(let i = 0; i < 7; i++) {
         temps.push(weather.list[i].main.temp);
